@@ -1,6 +1,7 @@
 import argparse
 from trainers.pix2pix_trainer import Pix2PixTrainer
-
+import os
+import torch
 
 if __name__=='__main__':
     parser = argparse.ArgumentParser()
@@ -42,6 +43,10 @@ if __name__=='__main__':
         )
 
     if args.op == 'train':
+        if not os.path.exists(args.results_dir):
+            os.makedirs(args.results_dir)
+        if not os.path.exists(args.save_dir):
+            os.makedirs(args.save_dir)
         trainer.train()
     else:
         trainer.test(args.checkpoint)
