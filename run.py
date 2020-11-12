@@ -42,6 +42,11 @@ if __name__=='__main__':
             args=args
         )
 
+    if not os.path.exists(args.checkpoint):
+        print('checkpoint path : ' + atgs.checkpoint)
+        print('checkpoint path is not exist.')
+        args.checkpoint = ""
+
     if args.op == 'train':
         if not os.path.exists(args.results_dir):
             os.makedirs(args.results_dir)
