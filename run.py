@@ -33,7 +33,7 @@ if __name__=='__main__':
     parser.add_argument('--lamb', type=float, default=10.0)
     parser.add_argument('--beta1', type=float, default=0.5)
     parser.add_argument('--beta2', type=float, default=0.999)
-    print("test")
+    
     args = parser.parse_args()
 
     trainer = None
