@@ -9,7 +9,7 @@ if __name__=='__main__':
     parser.add_argument('--model', type=str, choices=['pix2pix'], required=True)
     parser.add_argument('--op', type=str, choices=['train', 'test'], required=True)
     parser.add_argument('--dataset', type=str, default='./resources/facades')
-    parser.add_argument('--checkpoint', type=str)
+    parser.add_argument('--checkpoint', type=str, default = './checkpoints/checkpoint_last.pt')
     parser.add_argument('--save_dir', type=str, default='./checkpoints')
     parser.add_argument('--results_dir', type=str, default='./results')
     parser.add_argument('--device', type=int, default=0)
@@ -43,9 +43,9 @@ if __name__=='__main__':
         )
 
     if not os.path.exists(args.checkpoint):
-        print('checkpoint path : ' + atgs.checkpoint)
+        print('checkpoint path : ' + args.checkpoint)
         print('checkpoint path is not exist.')
-        args.checkpoint = ""
+        args.checkpoint = None
 
     if args.op == 'train':
         if not os.path.exists(args.results_dir):
